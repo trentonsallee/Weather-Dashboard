@@ -1,0 +1,31 @@
+.navbar {
+    background-color: rgb(96, 146, 153);
+}
+
+body{
+    background-color: beige;
+}
+
+header{
+    background-color: rgb(45, 108, 243);
+    color: whitesmoke;
+    width: 100%;
+}
+
+#currentWeather{
+    background-color:gold
+}
+
+#restOfDays{
+    background-color: rgb(172, 202, 221);
+    border: solid black 1px;
+    width: 100%;
+}
+
+
+#restOfDays ul {
+    border: 1px solid rgb(0, 0, 0); /* Add a border to each grid element */
+    padding: 10px;
+    text-align: center;
+  }
+  
