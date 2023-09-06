@@ -5,7 +5,7 @@ clearHistoryEl.on('click', clearHistory)
 var historyList = JSON.parse(localStorage.getItem("storedCitiesArray")) || [];
 const apiKey = "54ab12f9f770218eab336604399c722f";
 
-function renderSavedData() {
+function SavedData() {
   var searchHistoryEl = $('#searchHistory');
   searchHistoryEl.text('')
   for (var i = 0; i < historyList.length; i++)
@@ -17,7 +17,7 @@ function cityInput() {
   weatherAPI(citySearch);
   historyList.push(citySearch)
   localStorage.setItem('storedCitiesArray', JSON.stringify(historyList));
-  renderSavedData();
+  SavedData();
 };
 function weatherAPI(city) {
   var geocodeAPI = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=&appid=" + apiKey;
@@ -33,11 +33,7 @@ function weatherAPI(city) {
     .then(function (response) {
       return response.json();
     })
-      var url = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey + "&units=imperial"
-      fetch(url)
-      .then(function (response) {
-        return response.json();
-      })
+ 
       .then(function (data) {
         $('#day0city').text(data.name)
         var date = new Date(data.dt * 1000)
@@ -92,11 +88,11 @@ function weatherAPI(city) {
 function clearHistory() {
   localStorage.clear();
   historyList = [];
-  renderSavedData();
+  SavedData();
 }
 
 function bringBackData(fromHistory) {
-  getWeather(fromHistory);
+  weatherAPI(fromHistory);
 }
 
-renderSavedData();
+SavedData();
